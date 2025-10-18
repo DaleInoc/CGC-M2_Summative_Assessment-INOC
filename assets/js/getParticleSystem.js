@@ -118,9 +118,9 @@ function getParticleSystem(params) {
   sizeSpline.addPoint(0.0, 0.0);
   sizeSpline.addPoint(1.0, 1.0);
  // max point size = 512; => console.log(ctx.getParameter(ctx.ALIASED_POINT_SIZE_RANGE));
-  const radius = 0.5;
+  const radius = 0.25;
   const maxLife = 1.5;
-  const maxSize = 1.0;
+  const maxSize = 3.0;
   let gdfsghk = 0.0;
   function _AddParticles(timeElapsed) {
     gdfsghk += timeElapsed;
@@ -130,9 +130,9 @@ function getParticleSystem(params) {
       const life = (Math.random() * 0.75 + 0.25) * maxLife;
       _particles.push({
         position: new THREE.Vector3(
-          (Math.random() * 2 - 1) * radius,
-          (Math.random() * 2 - 1) * radius,
-          (Math.random() * 2 - 1) * radius).add(emitter),
+          0,
+          -2 * radius,
+          0),
         size: (Math.random() * 0.5 + 0.5) * maxSize,
         colour: new THREE.Color(),
         alpha: 1.0,
@@ -140,7 +140,7 @@ function getParticleSystem(params) {
         maxLife: life,
         rotation: Math.random() * 2.0 * Math.PI,
         rotationRate: Math.random() * 0.01 - 0.005,
-        velocity: new THREE.Vector3(0, 1.5, 0),
+        velocity: new THREE.Vector3(0, 0.5, 0),
       });
     }
   }
