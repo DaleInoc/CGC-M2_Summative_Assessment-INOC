@@ -6,7 +6,7 @@ import {TextureLoader} from "/assets/js/three.module";
 
 const scene = new THREE.Scene();
 const skyLoader = new TextureLoader();
-skyLoader.load("assets/textures/skybox/sky.jpg", function(texture){scene.background = texture;});
+skyLoader.load("assets/textures/skybox/cave.jpg", function(texture){scene.background = texture;});
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -15,10 +15,10 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 document.body.appendChild( renderer.domElement );
 
-const light = new THREE.HemisphereLight( 0xffffff );
+const light = new THREE.HemisphereLight( 0xc0c0c0 );
 scene.add(light);
 
-const bonfireLight = new THREE.PointLight(0xff9329, 1);
+const bonfireLight = new THREE.PointLight(0xff9329, 10);
 scene.add(bonfireLight);
 
 const controls = new OrbitControls(camera,renderer.domElement);
@@ -58,12 +58,21 @@ loader.load(
 //     texture: "assets/textures/fire/fire.png"
 // })
 
-const cylinder1geo = new THREE.CylinderGeometry(10,10,5);
-const cylinder1mat = new THREE.MeshStandardMaterial({color: 0xc0c0c0});
+const sandTexture = new THREE.TextureLoader().load('assets/textures/sand/sand.jpg');
+const cylinder1geo = new THREE.CylinderGeometry(100,100,5);
+const cylinder1mat = new THREE.MeshStandardMaterial({map: sandTexture});
 const cylinder1 = new THREE.Mesh(cylinder1geo, cylinder1mat);
-scene.add(cylinder1);
 cylinder1.position.y = -3.1;
-camera.position.z = 5;
+scene.add( cylinder1 );
+
+const fogTexture = new THREE.TextureLoader().load('assets/textures/fog/fog.jpg');
+const fogGeo = new THREE.PlaneGeometry(10,10,5);
+const fogMat = new THREE.MeshStandardMaterial({map: fogTexture});
+const fogGate = new THREE.Mesh(fogGeo,fogMat);
+fogGate.position.z = 25;
+scene.add(fogGate);
+
+camera.position.z = 20;
 
 
 function animate() {
