@@ -58,6 +58,27 @@ loader.load(
 //     texture: "assets/textures/fire/fire.png"
 // })
 
+const loader2 = new GLTFLoader();
+
+loader2.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.25,0.25,0.25);
+        gltf.scene.position.set(3,2,-6);
+        gltf.scene.rotateY( 330);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
 const sandTexture = new THREE.TextureLoader().load('assets/textures/sand/sand.jpg');
 const cylinder1geo = new THREE.CylinderGeometry(40,40,5,64);
 const cylinder1mat = new THREE.MeshStandardMaterial({map: sandTexture});
