@@ -58,17 +58,132 @@ loader.load(
 //     texture: "assets/textures/fire/fire.png"
 // })
 
-const loader2 = new GLTFLoader();
-
-loader2.load(
+loader.load(
     // resource URL
     '/assets/3d_models/curvedrock/curvedrock.glb',
     // called when the resource is loaded
     function ( gltf ) {
         scene.add( gltf.scene );
         gltf.scene.scale.set(0.25,0.25,0.25);
-        gltf.scene.position.set(3,2,-6);
-        gltf.scene.rotateY( 330);
+        gltf.scene.position.set(5,2,-6);
+        gltf.scene.rotateY( 2.79253);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.2,0.2,0.2);
+        gltf.scene.position.set(6,1,6);
+        gltf.scene.rotateY( 1.22173);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.18,0.18,0.18);
+        gltf.scene.position.set(-8,1,0);
+        gltf.scene.rotateY( 4.71239);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(1,1,1);
+        gltf.scene.position.set(-8,8,-27);
+        gltf.scene.rotateY( 3.14159);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.85,0.85,0.85);
+        gltf.scene.position.set(-32,8,-8);
+        gltf.scene.rotateY( 4.71239);
+
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.85,0.85,0.85);
+        gltf.scene.position.set(30,8,-1);
+        gltf.scene.rotateY( 1.58825);
+        gltf.scene.rotateX( -0.349066);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.6,0.6,0.6);
+        gltf.scene.position.set(10,6,35);
+        gltf.scene.rotateY( 0);
+        gltf.scene.rotateX( -0.349066);
 
     },
     function ( xhr ) {
