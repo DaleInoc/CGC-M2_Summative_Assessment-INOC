@@ -131,8 +131,8 @@ function getParticleSystem(params) {
       _particles.push({
         position: new THREE.Vector3(
           0,
-          -2 * radius,
-          0),
+            -2 * radius,
+          0).add(emitter),
         size: (Math.random() * 0.5 + 0.5) * maxSize,
         colour: new THREE.Color(),
         alpha: 1.0,

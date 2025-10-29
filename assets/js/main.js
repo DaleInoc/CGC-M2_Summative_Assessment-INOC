@@ -2,12 +2,8 @@ import * as THREE from "/assets/js/three.module";
 import { GLTFLoader } from "/assets/js/GLTFLoader";
 import {OrbitControls} from "/assets/js/OrbitControls";
 import {getParticleSystem} from "/assets/js/getParticleSystem";
-import {TextureLoader} from "/assets/js/three.module";
 
 const scene = new THREE.Scene();
-const skyLoader = new TextureLoader();
-skyLoader.load("assets/textures/skybox/sky.jpg", function(texture){scene.background = texture;});
-
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
@@ -15,11 +11,96 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 document.body.appendChild( renderer.domElement );
 
-const light = new THREE.HemisphereLight( 0xc0c0c0 );
+const light = new THREE.HemisphereLight( 0xffffff );
 scene.add(light);
 
 const bonfireLight = new THREE.PointLight(0xff9329, 10);
 scene.add(bonfireLight);
+
+const fireEffect = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( 0, 0 ,0),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight2 = new THREE.PointLight(0xff9329, 10);
+rockLight2.position.set(-14,8,-20.5);
+scene.add(rockLight2);
+const fireEffect2 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( -14,8,-20.5),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight3 = new THREE.PointLight(0xff9329, 10);
+rockLight3.position.set(-28,8,-4);
+scene.add(rockLight3);
+const fireEffect3 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( -28,8,-4),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight4 = new THREE.PointLight(0xff9329, 10);
+rockLight4.position.set(22.5,12,4);
+scene.add(rockLight4);
+const fireEffect4 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( 22.5,12,4),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight5 = new THREE.PointLight(0xff9329, 10);
+rockLight5.position.set(13,5,32);
+scene.add(rockLight5);
+const fireEffect5 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( 13,5,32),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight6 = new THREE.PointLight(0xff9329, 10);
+rockLight6.position.set(-20,7,24);
+scene.add(rockLight6);
+const fireEffect6 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( -20,7,24),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight7 = new THREE.PointLight(0xff9329, 10);
+rockLight7.position.set(15,9,-28);
+scene.add(rockLight7);
+const fireEffect7 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( 15,9,-28),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
+
+const rockLight8 = new THREE.PointLight(0xff9329, 10);
+rockLight8.position.set(-27.5,6,15);
+scene.add(rockLight8);
+const fireEffect8 = new getParticleSystem({
+    camera,
+    emitter: new THREE.Vector3( -27.5,6,15),
+    parent: scene,
+    rate: 20,
+    texture: "assets/textures/fire/fire.png"
+})
 
 const controls = new OrbitControls(camera,renderer.domElement);
 controls.mouseButtons.RIGHT = THREE.MOUSE.ROTATE;
@@ -50,13 +131,7 @@ loader.load(
     }
 );
 
-// const fireEffect = new getParticleSystem({
-//     camera,
-//     emitter: new THREE.Vector3( 0, 0 ,0),
-//     parent: scene,
-//     rate: 20,
-//     texture: "assets/textures/fire/fire.png"
-// })
+
 
 //Inner north
 loader.load(
@@ -65,7 +140,7 @@ loader.load(
     // called when the resource is loaded
     function ( gltf ) {
         scene.add( gltf.scene );
-        gltf.scene.scale.set(0.25,0.25,0.25);
+        gltf.scene.scale.set(0.35,0.35,0.35);
         gltf.scene.position.set(5,2,-6);
         gltf.scene.rotateY( 2.79253);
 
@@ -85,7 +160,7 @@ loader.load(
     // called when the resource is loaded
     function ( gltf ) {
         scene.add( gltf.scene );
-        gltf.scene.scale.set(0.2,0.2,0.2);
+        gltf.scene.scale.set(0.3,0.3,0.3);
         gltf.scene.position.set(6,1,6);
         gltf.scene.rotateY( 1.22173);
 
@@ -105,7 +180,7 @@ loader.load(
     // called when the resource is loaded
     function ( gltf ) {
         scene.add( gltf.scene );
-        gltf.scene.scale.set(0.18,0.18,0.18);
+        gltf.scene.scale.set(0.28,0.28,0.28);
         gltf.scene.position.set(-8,1,-1);
         gltf.scene.rotateY( 4.71239);
 
@@ -250,10 +325,47 @@ loader.load(
     function ( gltf ) {
         scene.add( gltf.scene );
         gltf.scene.scale.set(0.85,0.85,0.85);
-        gltf.scene.position.set(20,4,-25);
+        gltf.scene.position.set(20,4,-28);
         gltf.scene.rotateY( 2.79253);
         gltf.scene.rotateX( 0.349066);
 
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+//middle west
+loader.load(
+    // resource URL
+    '/assets/3d_models/curvedrock/curvedrock.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(0.3,0.3,0.3);
+        gltf.scene.position.set(-15,1,15);
+        gltf.scene.rotateY( 5.75959);
+
+    },
+    function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    function ( error ) {
+        console.log( 'An error happened' );
+    }
+);
+
+loader.load(
+    // resource URL
+    '/assets/3d_models/Gwyn/gwyn_lord_of_cinder.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+        scene.add( gltf.scene );
+        gltf.scene.scale.set(1.3,1.3,1.3);
+        gltf.scene.position.set(0,-0.6,25);
     },
     function ( xhr ) {
         console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
@@ -270,14 +382,16 @@ const cylinder1 = new THREE.Mesh(cylinder1geo, cylinder1mat);
 cylinder1.position.y = -10.5;
 scene.add( cylinder1 );
 
+const wallTexture = new THREE.TextureLoader().load("assets/textures/wall/wall.jpg");
 const cylinder2geo = new THREE.CylinderGeometry( 40, 40, 5, 64, 1,true,0.09,6.1 );
-const cylinder2mat = new THREE.MeshStandardMaterial( {color: 0xffff00} );
+const cylinder2mat = new THREE.MeshStandardMaterial( {map: wallTexture} );
 const cylinder2 = new THREE.Mesh( cylinder2geo, cylinder2mat );
 cylinder2.position.y = 1.9;
 scene.add( cylinder2 );
 
+const railTexture = new THREE.TextureLoader().load("assets/textures/staircase/rail.jpg")
 const railgeo = new THREE.BoxGeometry(0.5,1,3);
-const railmat = new THREE.MeshStandardMaterial({color: 0xa2a2a2});
+const railmat = new THREE.MeshStandardMaterial({map: railTexture});
 const rail1 = new THREE.Mesh(railgeo, railmat);
 rail1.position.x = 2.5;
 rail1.position.y = -0.5;
@@ -301,8 +415,9 @@ rail4.position.y = -1.4;
 rail4.position.z = 42.25;
 scene.add( rail4 );
 
+const stepTexture = new THREE.TextureLoader().load("assets/textures/staircase/step.jpg")
 const stepgeo = new THREE.BoxGeometry(4.5,0.5,1);
-const stepmat = new THREE.MeshStandardMaterial({color: 0xffffff});
+const stepmat = new THREE.MeshStandardMaterial({map: stepTexture});
 const step1 = new THREE.Mesh(stepgeo, stepmat);
 step1.position.y = -0.8;
 step1.position.z = 40.25;
@@ -334,12 +449,26 @@ const fogGate = new THREE.Mesh(fogGeo,fogMat);
 fogGate.position.z = 39.5;
 scene.add(fogGate);
 
+const fogGate2 = new THREE.Mesh(fogGeo,fogMat);
+fogGate2.rotation.y = Math.PI;
+fogGate2.position.z = 39;
+scene.add(fogGate2);
+
 camera.position.z = 35;
 camera.position.y = 1;
 
 
 function animate() {
-    // fireEffect.update(0.016);
+    fireEffect.update(0.016);
+    //fireEffect1.update(0.016);
+    fireEffect2.update(0.016);
+    fireEffect3.update(0.016);
+    fireEffect4.update(0.016);
+    fireEffect5.update(0.016);
+    fireEffect6.update(0.016);
+    fireEffect7.update(0.016);
+    fireEffect8.update(0.016);
+
     renderer.render( scene, camera );
 
 }
