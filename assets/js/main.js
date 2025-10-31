@@ -1,7 +1,7 @@
-import * as THREE from "/assets/js/three.module";
-import { GLTFLoader } from "/assets/js/GLTFLoader";
-import {OrbitControls} from "/assets/js/OrbitControls";
-import {getParticleSystem} from "/assets/js/getParticleSystem";
+import * as THREE from "/assets/js/three.module.js";
+import { GLTFLoader } from "/assets/js/GLTFLoader.js";
+import {OrbitControls} from "/assets/js/OrbitControls.js";
+import {getParticleSystem} from "/assets/js/getParticleSystem.js";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -11,7 +11,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 document.body.appendChild( renderer.domElement );
 
-const light = new THREE.HemisphereLight( 0xffffff );
+const light = new THREE.HemisphereLight( 0x444444);
 scene.add(light);
 
 const bonfireLight = new THREE.PointLight(0xff9329, 10);
@@ -375,9 +375,13 @@ loader.load(
     }
 );
 
-const sandTexture = new THREE.TextureLoader().load('assets/textures/sand/sand.jpg');
+const sandAO = new THREE.TextureLoader().load('assets/textures/GroundSand005/GroundSand005_AO_1K.jpg');
+const sandDiff = new THREE.TextureLoader().load('assets/textures/GroundSand005/GroundSand005_COL_1K.jpg');
+const sandNormal = new THREE.TextureLoader().load('assets/textures/GroundSand005/GroundSand005_NRM_1K.jpg');
+
+
 const cylinder1geo = new THREE.CylinderGeometry(40,40,20,64);
-const cylinder1mat = new THREE.MeshStandardMaterial({map: sandTexture});
+const cylinder1mat = new THREE.MeshStandardMaterial({aoMap: sandAO, map: sandDiff, normalMap: sandNormal});
 const cylinder1 = new THREE.Mesh(cylinder1geo, cylinder1mat);
 cylinder1.position.y = -10.5;
 scene.add( cylinder1 );
@@ -444,7 +448,7 @@ scene.add( stepLast );
 
 const fogTexture = new THREE.TextureLoader().load('assets/textures/fog/fog.jpg');
 const fogGeo = new THREE.PlaneGeometry(10,9,5);
-const fogMat = new THREE.MeshStandardMaterial({map: fogTexture});
+const fogMat = new THREE.MeshStandardMaterial({map: fogTexture, emissive:0xffffff, emissiveIntensity:0.25});
 const fogGate = new THREE.Mesh(fogGeo,fogMat);
 fogGate.position.z = 39.5;
 scene.add(fogGate);
@@ -460,7 +464,6 @@ camera.position.y = 1;
 
 function animate() {
     fireEffect.update(0.016);
-    //fireEffect1.update(0.016);
     fireEffect2.update(0.016);
     fireEffect3.update(0.016);
     fireEffect4.update(0.016);
